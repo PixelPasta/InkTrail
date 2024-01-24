@@ -7,7 +7,8 @@ async function get() {
  response = await response.json()
  let manga = response.data[Math.floor(Math.random() * response.data.length)]
  let info = {
- malID = 
+ malURL: manga.url,
+ 
  }
 }
 get()
