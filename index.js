@@ -18,6 +18,22 @@ app.get('/romance', async (req, res) => {
         response = await fetch(`https://api.jikan.moe/v4/manga?genres=22&page=${Math.floor(Math.random() * lastPage+1)}&min_score=5&start_date=2018-01-01`)
         response = await response.json()
         let manga = response.data[Math.floor(Math.random() * response.data.length)]
+        let tags = ""
+        if (manga.genres.length > 1) {
+            let first = 1 
+            manga.genres.forEach(function (item) {
+            if (first === 1) {
+                tags = item.name
+                first = 0
+            }
+                tags = `${tags}, ${item.name}`
+            })
+        } else {
+            tags = manga.genres[0].name
+        }
+       // Very Shitty Code IK
+      
+console.log(manga)
        
         let info = {
            mal_url: manga.url,
@@ -27,7 +43,11 @@ app.get('/romance', async (req, res) => {
            chapter_count: manga.chapters,
            score: `${manga.score}/10`,
            desc: manga.synopsis,
-           author: manga.authors[0].name
+           author: manga.authors[0].name,
+           status: manga.published.string,
+           tags,
+           air_stat: manga.status
+
         }
         return info
        }

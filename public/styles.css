@@ -24,8 +24,21 @@
   padding-right: 10px;
   border-radius: 5px;
   display: none;
+  
 }
 
-.MainManga img {
-  padding:2px;
+.desc {
+  padding-top: 5px;
+  display: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
 }
+
+
+.MainManga img {
+padding: 2px;
+
+}
+

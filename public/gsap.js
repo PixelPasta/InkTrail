@@ -20,5 +20,6 @@ document.addEventListener('DOMContentLoaded',async function() {
 await sleep(2000)
     document.getElementsByClassName("loading")[0].style.display = 'none'
    document.getElementsByClassName('MainManga')[0].style.display = 'block'
-  
+   document.getElementsByClassName('desc')[0].style.display = 'block'
+  document.getElementsByClassName("CoverImage")[0].style.display = 'block'
 });

@@ -54,24 +54,40 @@ Finding a good manga <div class="spinner-border" role="status">
 
 </div>
 
+
 <div class="MainManga">
+  
+    <!-- Use flex-grow-1 to make the image cover the entire height of the card -->
   <div class="card flex-row bg-dark"><img class="card-img-left example-card-img-responsive" src="<%= cover %>"/>
     <div class="card-body">
       <h4 class="card-title h4 h3-sm text-white"><u><%= title_en %></u></h4>
-      <p class="card-text text-white ">
+      <p class="card-text text-white">
         <i class="bi bi-book-half"></i>  Titles: <br>
         🇯🇵 <%= title_jp %>, <br> 🇺🇸 <%= title_en %> <br><br>
-        <i class="bi bi-journal-bookmark-fill"></i> Description: <%= desc %><br><br>
-        <i class="bi bi-heart-fill"></i> Score: <%= score %><br><br>
-        <i class="bi bi-pen-fill"></i> Author: <%= author %>
         
-      <!-- Add Other Parts of Info Object -->
-      <!-- Link to home page -->
+        <i class="bi bi-heart-fill"></i> Score: <%= score %><br><br>
+        <i class="bi bi-pen-fill"></i> Author: <%= author %><br><br>
+        <i class="bi bi-calendar"></i>  Publishing Status: <%= status %><br><br>
+        <i class="bi bi-bookmark"></i> Tags: <%= tags%><br><br>
+        <i class="bi bi-clock-history"></i> Status: <%= air_stat %>
+        <!-- Add Other Parts of Info Object -->
+        <!-- Link to home page -->
       </p>
     </div>
   </div>
+</div>
 
-
+<div class="desc">
+<div class=" card bg-dark text-white">
+ 
+  <div class="card-body">
+    <h4 class="card-title "><i class="bi bi-journal-bookmark-fill"> </i>Description</h4> <hr>
+    <p class="card-text">
+      <%= desc %>
+    </p>
+    <a href="<%= mal_url %>" target="_blank" class="btn btn-secondary">MyAnimeList Link</a>
+  </div>
+</div>
 </div>
     
 </body>
