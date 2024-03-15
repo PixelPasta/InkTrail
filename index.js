@@ -12,6 +12,8 @@ app.get('/', async (req, res) => {
 app.get('/romance', async (req, res) => {
     
     async function get() {
+
+        try {
         let response = await fetch("https://api.jikan.moe/v4/manga?genres=22&page=1&min_score=5&start_date=2018-01-01")
         response = await response.json()
         let lastPage = response.pagination.last_visible_page
@@ -81,7 +83,7 @@ app.get('/romance', async (req, res) => {
 
 
       
-
+   
        
         let info = {
            mal_url: manga.url,
@@ -103,13 +105,20 @@ app.get('/romance', async (req, res) => {
     
         }
         return info
+      
+        
+    }
+    catch(err) {
+        console.log(err)
+        res.send("Unable to load assets. This happens sometimes. Just reload to fix.")
+       return 
+         
+    }
        }
        res.render('romance', await get())
+
 })
 
-app.get("/public/postboot/:type/:file", async (req, res) => {
-    res.sendFile(`${__dirname}/public/postboot/${req.params.type}/${req.params.file}`)
-})
 
 app.get('/public/:id', async (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.id}`)
