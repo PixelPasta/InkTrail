@@ -11,20 +11,8 @@ function getOffset(el) {
 
 
 document.addEventListener('DOMContentLoaded',async function() {
-    let tl = gsap.timeline()
-    gsap.registerPlugin(CustomEase)
-    tl.from(".Heading", 
-    { opacity: 0, 
-        y: 100, 
-        duration: 1,
-    ease: "bounce.out" });
-await sleep(2000)
-    document.getElementsByClassName("loading")[0].style.display = 'none'
-   document.getElementsByClassName('MainManga')[0].style.display = 'block'
-   document.getElementsByClassName('desc')[0].style.display = 'block'
-   document.getElementsByClassName('discover')[0].style.display = 'flex'
-   document.getElementsByClassName('discoverMore')[0].style.display = 'flex'
-   document.getElementsByClassName('divide')[0].style.display = 'block'
+ 
+
 
 
    for (let i = 1; i <= 5; i++) {

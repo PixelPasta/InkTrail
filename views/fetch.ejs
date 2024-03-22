@@ -15,7 +15,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100&family=Dancing+Script&family=Lobster+Two&family=Raleway:wght@100&family=Teko:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="../public/styles.css">
+        <link rel="stylesheet" href="../public/fetchStyles.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
@@ -23,7 +23,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
-        <script src="../public/gsap.js"></script>
+        <script src="../public/fetchGsap.js"></script>
         
     </head>
 <body style="background-color: gray;  max-width: 100%;
@@ -38,15 +38,9 @@ overflow-x: hidden;">
         </div>
       </nav>
 
-<div class="Heading">Romance</div>
+<div class="Heading"><%= heading %></div>
 
-<div class="loading">
 
-Finding a good manga <div class="spinner-border" role="status">
-    
-  </div>
-
-</div>
 
 
 <div class="MainManga">
@@ -84,7 +78,7 @@ Finding a good manga <div class="spinner-border" role="status">
 </div>
 </div>
 
-<hr class="divide">
+<hr>
 
 <div class="alert bg-dark discoverMore text-white">
 Discover More
@@ -93,19 +87,19 @@ Discover More
 <div class="discover">
 
 <div class="manga1">
-  <a href="./fetch/<%= manga1.mal_id %>" target="_blank"> <img src="<%= manga1.poster %>"> </a>
+  <img src="<%= manga1.poster %>">
 </div>
 <div class="manga2">
-  <a href="./fetch/<%= manga2.mal_id %>" target="_blank"> <img src="<%= manga2.poster %>"> </a>
+  <img src="<%= manga2.poster %>">
 </div>
 <div class="manga3">
-  <a href="./fetch/<%= manga3.mal_id %>" target="_blank"> <img src="<%= manga3.poster %>"> </a>
+  <img src="<%= manga3.poster %>">
 </div>
 <div class="manga4">
-  <a href="./fetch/<%= manga4.mal_id %>" target="_blank"> <img src="<%= manga4.poster %>"> </a>
+  <img src="<%= manga4.poster %>">
 </div>
 <div class="manga5">
-  <a href="./fetch/<%= manga5.mal_id %>" target="_blank"> <img src="<%= manga5.poster %>"> </a>
+  <img src="<%= manga5.poster %>">
 </div>
 
 </div>

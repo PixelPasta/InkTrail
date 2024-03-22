@@ -23,13 +23,13 @@
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
-  display: none;
+  display: block;
   
 }
 
 .desc {
   padding-top: 5px;
-  display: none;
+  display: block;
   border-radius: 5px;
   padding-left: 10px;
   padding-right: 10px;
@@ -105,7 +105,7 @@ height: 350px;
 }
 
 .discover {
-  display: none;
+  display: flex;
   justify-content: center;
 }
 
@@ -113,11 +113,7 @@ height: 350px;
   margin-top: 20px;
   margin-left: 800px;
   margin-right: 800px;;
-  display: none;
+  display: flex;
   justify-content: center;
   text-align: center;
-}
-
-.divide {
-  display: none;
 }
