@@ -14,10 +14,10 @@ app.get('/romance', async (req, res) => {
     async function get() {
 
         try {
-        let response = await fetch("https://api.jikan.moe/v4/manga?genres=22&page=1&min_score=5&start_date=2018-01-01")
+        let response = await fetch(`https://api.jikan.moe/v4/manga?genres=22&page=1&min_score=${req.query.score}&start_date=${req.query.min_year}-01-01`)
         response = await response.json()
         let lastPage = response.pagination.last_visible_page
-        response = await fetch(`https://api.jikan.moe/v4/manga?genres=22&page=${Math.floor(Math.random() * lastPage+1)}&min_score=5&start_date=2018-01-01`)
+        response = await fetch(`https://api.jikan.moe/v4/manga?genres=22&page=${Math.floor(Math.random() * lastPage+1)}&min_score=${req.query.score}&start_date=${req.query.min_year}-01-01`)
         response = await response.json()      
         
         let chosen = Math.floor(Math.random() * response.data.length)
@@ -72,7 +72,7 @@ app.get('/romance', async (req, res) => {
             manga.genres.forEach(function (item) {
             if (first === 1) {
                 tags = item.name
-                first = 0
+                return first = 0
             }
                 tags = `${tags}, ${item.name}`
             })
@@ -106,6 +106,7 @@ app.get('/romance', async (req, res) => {
     }
     catch(err) {
         console.log(err)
+       
         res.send("Unable to load assets. This happens sometimes. Just reload to fix.")
        return 
          
@@ -180,19 +181,22 @@ app.get('/fetch/:id', async (req, res) => {
         content.genres.forEach(function (item) {
         if (first === 1) {
             tags = item.name
-            first = 0
+            return first = 0
         }
-            tags = `${tags}, ${item.name}`
+       
+        tags = `${tags}, ${item.name}`
+        
         })
     } else {
         tags = content.genres[0].name
     }
 
+    
     let info = {
         heading: content.genres[0].name,
         mal_url: content.url,
         cover: content.images.jpg.image_url,
-        title_en: content.title_english,
+        title_en: content.title_synonyms[0],
         title_jp: content.title_japanese,
         chapter_count: content.chapters,
         score: `${content.score}/10`,
@@ -213,8 +217,14 @@ app.get('/fetch/:id', async (req, res) => {
             let content = await fetch(`https://api.jikan.moe/v4/manga/${req.params.id}/full`)
             content = (await content.json()).data
             res.redirect(content.url)
+            console.log(err)
         }
  
+})
+
+app.get('/form/:genre', async (req, res) => {
+    res.render('form', {genre: req.params.genre})
+    console.log(req.params.genre)
 })
 
 app.get('/public/:id', async (req, res) => {
