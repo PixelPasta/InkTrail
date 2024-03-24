@@ -231,7 +231,7 @@ app.get('/fetch/:id', async (req, res) => {
 
 app.get('/ratelimit', async (req, res) => {
     const sleep = ms => new Promise(r => setTimeout(r, ms));
-    await sleep(2000)
+    await sleep(1000)
     console.log(`REDIRECTED`)
     res.redirect(req.query.url)
  
