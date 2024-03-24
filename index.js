@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const session = require('express-session');
 const app = express()
 const port = process.env.PORT || 3000
 const fetch = require("node-fetch");
@@ -9,11 +10,14 @@ app.get('/', async (req, res) => {
     res.render('index')
 })
 
+app.use(session({secret: "Shh, its a secret!"}));
+
 app.get('/romance', async (req, res) => {
     
+    try {
     async function get() {
 
-        try {
+        
         let response = await fetch(`https://api.jikan.moe/v4/manga?genres=22&page=1&min_score=${req.query.score}&start_date=${req.query.min_year}-01-01`)
         response = await response.json()
         let lastPage = response.pagination.last_visible_page
@@ -101,36 +105,33 @@ app.get('/romance', async (req, res) => {
     
         }
         return info
-      
-        
-    }
-    catch(err) {
-        console.log(err)
-       
-        res.send("Unable to load assets. This happens sometimes. Just reload to fix.")
-       return 
-         
-    }
        }
        res.render('romance', await get())
-
+    }
+    catch(err) {
+        console.log(`REDIRECTED`)
+        res.redirect(`/romance/?score=${req.query.score}&min_year=${req.query.min_year}`)
+    }
 })
 
 
 app.get('/fetch/:id', async (req, res) => {
 
     try {
+
+    async function get() {
     let content = await fetch(`https://api.jikan.moe/v4/manga/${req.params.id}/full`)
     content = (await content.json()).data
+ 
 
     let response = await fetch("https://api.jikan.moe/v4/manga?genres=22&page=1&min_score=5&start_date=2018-01-01")
     response = await response.json()
+  
     let lastPage = response.pagination.last_visible_page
     response = await fetch(`https://api.jikan.moe/v4/manga?genres=22&page=${Math.floor(Math.random() * lastPage+1)}&min_score=5&start_date=2018-01-01`)
     response = await response.json()      
     
     let chosen = Math.floor(Math.random() * response.data.length)
-    let manga = response.data[chosen]
 
 
     function generateRandomArray(min, max, exception) {
@@ -196,7 +197,7 @@ app.get('/fetch/:id', async (req, res) => {
         heading: content.genres[0].name,
         mal_url: content.url,
         cover: content.images.jpg.image_url,
-        title_en: content.title_synonyms[0],
+        title_en: content.title,
         title_jp: content.title_japanese,
         chapter_count: content.chapters,
         score: `${content.score}/10`,
@@ -211,14 +212,28 @@ app.get('/fetch/:id', async (req, res) => {
         manga4,
         manga5
     }
-    res.render('fetch', info)
+
+    return info 
+}
+    res.render('fetch', await get())
         }
         catch(err) {
             let content = await fetch(`https://api.jikan.moe/v4/manga/${req.params.id}/full`)
             content = (await content.json()).data
-            res.redirect(content.url)
-            console.log(err)
+         
+       
+            res.redirect(`/ratelimit/?url=/fetch/${req.params.id}`)
+            
+           
         }
+ 
+})
+
+app.get('/ratelimit', async (req, res) => {
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    await sleep(2000)
+    console.log(`REDIRECTED`)
+    res.redirect(req.query.url)
  
 })
 
@@ -234,10 +249,5 @@ app.get('/public/:id', async (req, res) => {
 app.listen(port, async () => {
     console.log(`Listening on ${port}`)
 })
-
-
-process.on('uncaughtException', function (exception) {
-    console.log(exception)
-   });
 
 
