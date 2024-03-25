@@ -110,7 +110,17 @@ app.get('/romance', async (req, res) => {
     }
     catch(err) {
         console.log(`REDIRECTED`)
-        res.redirect(`/romance/?score=${req.query.score}&min_year=${req.query.min_year}`)
+        let redirectCount = parseInt(req.query.redirectCount) || 0;
+
+        if (redirectCount >= 5) { // Limit the number of redirect attempts
+            // If the maximum number of redirect attempts is reached, render an error page or send an error response
+            res.send(`Ratelimit Reached! Please try again after some time.`)
+            return; // Exit the function to prevent further processing
+        }
+        
+        // Increment the redirect count
+        redirectCount++;
+        res.redirect(`/romance/?score=${req.query.score}&min_year=${req.query.min_year}&redirectCount=${redirectCount}`)
     }
 })
 
@@ -231,9 +241,9 @@ app.get('/fetch/:id', async (req, res) => {
 
 app.get('/ratelimit', async (req, res) => {
     const sleep = ms => new Promise(r => setTimeout(r, ms));
-    await sleep(1000)
-    console.log(`REDIRECTED`)
+    await sleep(2000)
     res.redirect(req.query.url)
+    
  
 })
 
