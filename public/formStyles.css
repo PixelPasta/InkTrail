@@ -164,3 +164,26 @@ height: 350px;
   padding-right: 30%;
   display: none;
 }
+.footer {
+  width: 100%;
+  height: 60px;
+
+}
+.footer-text {
+  padding: 0%;
+  margin: 0%;
+  display: inline;
+  position: relative;
+  top: 3px;
+}
+.footer-text a:link{
+  text-decoration: none;
+  color: white
+}
+.footer-text a:hover{
+  text-shadow: 5px 3px 4px rgba(150, 150, 150, 1);
+}
+.footer-text a:visited{
+  text-decoration: none;
+  color: white
+}

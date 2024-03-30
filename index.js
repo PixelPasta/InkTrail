@@ -1,5 +1,5 @@
 const express = require('express');
-const session = require('express-session');
+
 const app = express()
 const port = process.env.PORT || 3000
 const fetch = require("node-fetch");
@@ -10,7 +10,7 @@ app.get('/', async (req, res) => {
     res.render('index')
 })
 
-app.use(session({secret: "Shh, its a secret!"}));
+
 
 app.get('/romance', async (req, res) => {
     

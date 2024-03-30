@@ -25,6 +25,7 @@ await sleep(2000)
    document.getElementsByClassName('discover')[0].style.display = 'flex'
    document.getElementsByClassName('discoverMore')[0].style.display = 'flex'
    document.getElementsByClassName('divide')[0].style.display = 'block'
+   document.getElementsByClassName('footer')[0].style.display = 'block'
 
 
    for (let i = 1; i <= 5; i++) {

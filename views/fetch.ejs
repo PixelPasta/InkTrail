@@ -30,7 +30,7 @@
 overflow-x: hidden;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white" style="background-color: #B1A296;">
        
-        <a class="navbar-brand" href="#" style="padding-left: 10px;"><i class="bi bi-vector-pen"></i> InkTrail</a>
+        <a class="navbar-brand" href="../.." style="padding-left: 10px;"><i class="bi bi-vector-pen"></i> InkTrail</a>
         <div class="collapse navbar-collapse w-100 order-3 dual-collapse2" id="navbarSupportedContent">          
           <ul class="navbar-nav mr-auto">
               
@@ -86,24 +86,62 @@ Discover More
 
 <div class="discover">
 
+<a href="./<%= manga1.mal_id %>" target="_blank">
 <div class="manga1">
-  <img src="<%= manga1.poster %>">
+<img src="<%= manga1.poster %>">
 </div>
+</a>
+
 <div class="manga2">
+<a href="./<%= manga2.mal_id %>" target="_blank">
+
   <img src="<%= manga2.poster %>">
 </div>
+</a>
+
 <div class="manga3">
+<a href="./<%= manga3.mal_id %>" target="_blank">
+  
   <img src="<%= manga3.poster %>">
 </div>
+</a>
+
 <div class="manga4">
+<a href="./<%= manga4.mal_id %>" target="_blank">
+
   <img src="<%= manga4.poster %>">
 </div>
+</a>
+
 <div class="manga5">
+<a href="./<%= manga5.mal_id %>" target="_blank">
+  
   <img src="<%= manga5.poster %>">
 </div>
 
+</a>
+
 </div>
     
+<div class="bg-dark footer " style="margin-top: 10px;">
+  <img src="../public/logo_gret.png" width="64" height="60" style="display: inline;">
+  <div class="footer-text text-light">
+    PixelPasta 2024
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="bi bi-github text-light nav-item"></i> <a href="https://github.com/PixelPasta" target="_blank">Github</a>
+  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="bi bi-reddit"></i> <a href="https://reddit.com/u/AssasinatorX4" target="_blank">Reddit</a>
+  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="bi bi-discord text-light nav-item"></i> <a href="https://pixelpasta.github.io/invite" target="_blank">Discord</a>
+  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i class="bi bi-twitter text-light nav-item"></i> <a href="https://twitter.com/ItsMePixelPasta" target="_blank">Twitter</a>
+  </div>
+  </div>
+
 <!-- create new endpoint for manga search according to id and anchor cards to endpoint -->
 </body>
 </html>
