@@ -9,7 +9,7 @@ app.set('view engine', 'ejs')
 app.get('/', async (req, res) => {
     res.render('index')
 })
-
+app.set("views", path.join(__dirname, "views"))
 
 
 app.get('/romance', async (req, res) => {
