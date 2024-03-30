@@ -253,6 +253,7 @@ app.get('/form/:genre', async (req, res) => {
 })
 
 app.get('/public/:id', async (req, res) => {
+    console.log(`:3`)
     res.sendFile(__dirname+'/public/'+req.params.id)
 })
 
