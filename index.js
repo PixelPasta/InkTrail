@@ -252,7 +252,9 @@ app.get('/form/:genre', async (req, res) => {
     console.log(req.params.genre)
 })
 
-
+app.get('/public/:id', async (req, res) => {
+    res.sendFile(__dirname+'/public/'+req.params.id)
+})
 
 
 app.listen(port, async () => {
